@@ -15,7 +15,10 @@ This "project" is more like a homework. There are five problems. In problems tha
     {
         cout << "30\n20\n10" << endl;
     }
-1) The subparts to this problem involve errors in the use of pointers.
+
+#1
+
+The subparts to this problem involve errors in the use of pointers.
 
 a) This program is supposed to write 30 20 10, one per line. Find all of the bugs and show a fixed version of the program:
 
@@ -137,8 +140,9 @@ e) This program is supposed to write 100 99 98 3 2 1, but it probably does not. 
     }
     
     
-    
-2) For each of the following parts, write a single C++ statement that performs the indicated task. For each part, assume that all previous statements have been executed (e.g., when doing part e, assume the statements you wrote for parts a through d have been executed). For each part, do not use any variable names not mentioned in that part (e.g., if the part doesn't mention cat, do not use cat in your answer).
+#2
+
+For each of the following parts, write a single C++ statement that performs the indicated task. For each part, assume that all previous statements have been executed (e.g., when doing part e, assume the statements you wrote for parts a through d have been executed). For each part, do not use any variable names not mentioned in that part (e.g., if the part doesn't mention cat, do not use cat in your answer).
 
 a) Declare a pointer variable named cat that can point to a variable of type double.
 
@@ -161,7 +165,9 @@ i) Using the == operator in the initialization expression, declare a bool variab
 i) Using the * operator in the initialization expression, declare a bool variable named b and initialize it with an expression that evaluates to true if the double pointed to by cat is equal to the double immediately following the double pointed to by cat, and to false otherwise. Do not use the name mouse.
 
 
-3) a) Rewrite the following function so that it returns the same result, but does not increment the variable ptr. Your new program must not use any square brackets, but must use an integer variable to visit each double in the array. You may eliminate any unneeded variable.
+#3
+
+a) Rewrite the following function so that it returns the same result, but does not increment the variable ptr. Your new program must not use any square brackets, but must use an integer variable to visit each double in the array. You may eliminate any unneeded variable.
 
     double mean(const double* scores, int numScores)
     {
@@ -190,7 +196,9 @@ b) Rewrite the following function so that it does not use any square brackets (n
     }
 c) Now rewrite the function shown in part b so that it uses neither square brackets nor any integer variables. Your new function must not use any local variables other than the parameters. Do not use any of the <cstring> functions such as strlen, strcpy, etc.
 
-4) What does the following program print and why? Be sure to explain why each line of output prints the way it does to get full credit.
+    
+#4
+What does the following program print and why? Be sure to explain why each line of output prints the way it does to get full credit.
 
     #include <iostream>
     using namespace std;
@@ -236,8 +244,9 @@ c) Now rewrite the function shown in part b so that it uses neither square brack
             cout << array[i] << endl;
     } 
                                     
+#5
                                     
-5) Write a function named removeS that accepts one character pointer as a parameter and returns no value. The parameter is a C string. This function must remove all of the upper and lower case 's' letters from the string. The resulting string must be a valid C string.
+Write a function named removeS that accepts one character pointer as a parameter and returns no value. The parameter is a C string. This function must remove all of the upper and lower case 's' letters from the string. The resulting string must be a valid C string.
 
 Your function must declare no more than one local variable in addition to the parameter; that additional variable must be of a pointer type. Your function must not use any square brackets and must not use any of the <cstring> functions such as strlen, strcpy, etc.
 
