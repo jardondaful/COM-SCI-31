@@ -7,6 +7,12 @@ Go through the following sections of the class zyBook, doing the Participation A
 8.1 and 8.2 (Part 2 does not depend on these)
 
 
+
+
+
+
+
+
 Part 2
 
 
