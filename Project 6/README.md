@@ -141,14 +141,23 @@ e) This program is supposed to write 100 99 98 3 2 1, but it probably does not. 
 2) For each of the following parts, write a single C++ statement that performs the indicated task. For each part, assume that all previous statements have been executed (e.g., when doing part e, assume the statements you wrote for parts a through d have been executed). For each part, do not use any variable names not mentioned in that part (e.g., if the part doesn't mention cat, do not use cat in your answer).
 
 a) Declare a pointer variable named cat that can point to a variable of type double.
+
 b) Declare mouse to be a 5-element array of doubles.
+
 c) Make the cat variable point to the last element of mouse.
+
 d) Make the double pointed to by cat equal to 25, using the * operator.
+
 e) Without using the cat pointer, and without using square brackets, set the fourth element (i.e., the one at position 3) of the mouse array to have the value 54.
+
 f) Move the cat pointer back by three doubles.
+
 g) Using square brackets, but without using the name mouse, set the third element (i.e., the one at position 2) of the mouse array to have the value 17. (You may use cat.)
+
 h) Without using the * operator or the name mouse, but using square brackets, set the double pointed to by cat to have the value 42.
+
 i) Using the == operator in the initialization expression, declare a bool variable named d and initialize it with an expression that evaluates to true if cat points to the djouble at the start of the mouse array, and to false otherwise.
+
 i) Using the * operator in the initialization expression, declare a bool variable named b and initialize it with an expression that evaluates to true if the double pointed to by cat is equal to the double immediately following the double pointed to by cat, and to false otherwise. Do not use the name mouse.
 
 
