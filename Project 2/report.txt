@@ -1,0 +1,17 @@
+Part a)
+One problem that I ran into while making this program was trying to get the full name registered into the program when running it. Since there is a space between the person’s first name and the person’s last name, the first name was registered in the variable that is supposed to store the entire name and the last name was registered in the variable that stores whether the rented car was luxury or not. To fix this issue, I had to use the cin.ignore() command before the program received the user input for the customer’s name. 
+Another problem that I ran into while making the program was making sure that the number inputted for the month that the rental started was a valid input. Instead of rejecting the inputted month if it wasn’t an integer between 1 and 12 inclusive, I accidentally coded the corresponding boolean statement so that it was defined as false if the inputted month wasn't equal to all numbers between 1 and 12 inclusive at the same time (if month !=1 || month!=2…). To fix this, I changed the corresponding boolean statement so that the boolean statement was defined as false if the inputted month wasn’t equal to any number between 1 and 12 inclusive (if month !=1 && month!= 2…)
+
+Part b) 
+Non-Luxury Car Rented During a Winter Month That Was Not Driven: (0, 0, 5, Jordan Lin, n, 2)
+Luxury Car Rented During a Non-Winter Month That Was Driven for Less Than 100 Miles: (3, 90, 5, Jordan Lin, y, 6)
+Non-Luxury Car Rented During a Winter Month That Was Driven for More than 100 Miles but Less than 500 Miles: (36, 300, 5, Jordan Lin, n, 2)
+Luxury Car Rented During a Non-Winter Month That Was Driven for More Than 500 Miles: (90, 600, 5, Jordan Lin, y, 6)
+Non-Luxury Car Rented During a Winter Month That Was Driven for More than 100 Miles but Less than 500 Miles: (0, 300, 5, Jordan Lin, n, 2)
+Starting Odometer Reading of Rented Car is Negative: (-5, 0, 5, Jordan Lin, y, 5)
+Ending Odometer Reading is Less Than the Starting Reading: (100, 80, 5, Jordan Lin, y, 2)
+Number of Rental Days is Not Positive: (300, 1200, 0, Jordan Lin, n, 4)
+Empty String was Provided for the Customer Name: (0, 300, 5,, n, 2)
+Luxury Status is not y or n: (0, 300, 5, Jordan Lin, N, 2)
+Month Number is Not an Integer But is Between 1 and 12: (0, 300, 5.2, Jordan Lin, n, 2)
+Month Number is an Integer But is Not Between 1 and 12: (0, 300, 15, Jordan Lin, n, 2)
