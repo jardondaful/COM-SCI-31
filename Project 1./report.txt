@@ -1,0 +1,26 @@
+For step 5 of the project, I introduced integer inputs like "100" for the number of students that were surveyed, integer inputs that 
+represented the number of students that prefered to take classes in person greater than the number of students surveyed (ex: 120), 
+and integer inputs that represented the number students that prefered to  take classes online greater than the number of students 
+surveyed (ex: 109). This resulted in both the percentage of students that prefered to take classes in person and the percentage of 
+students that prefered to take classes online to be greater than 100% (120% and 109%, respectively), which does not make sense since 
+you cannot have more students surveyed that preferred either instruction method than the total number of surveyed students. 
+
+For step 6 of the project, the logical errors that I introduced into the program for the file logic_error.cpp included removing the 
+multiplier for the pctLikeInPerson variable and changing the multiplier for the variable pctLikeAtHome from 100.0 to 10.0. The first 
+logical error resulted in the outputted percentage of surveyed people that preferred to take classes in person to simply be the ratio 
+of surveyed students that preferred to take classes in person rounded down to 0.0. For example, when I had inputted that 100 people 
+were surveyed and that 52 of them preferred to take classes in person, the program displayed that 0.0% of the surveyed participants 
+preferred to take classes in person when in reality the percentage is 52%. The second logical error resulted in the outputted 
+percentage of surveyed people that preferred to take classes online to be reduced by a factor of 10. For example, when I had inputted 
+that 200 people were surveyed and that 100 of them preferred to take classes at home, the output displayed that 5.0% of people that 
+were surveyed preferred to take classes at home when in reality the percentage is 50.0%.
+
+For step 7 of the project, the errors that I introduced into the program for the file compile_error.cpp included removing the “using 
+namespace std;” command, removing the curly brackets around the code of the main() function, and removing the parentheses around the 
+boolean statement of the if statement in line 28. The first error resulted in the errors relating to unknown name types for the 
+commands “cout” and “cin” to be displayed since a name type was not defined for either the “cout” or “cin” commands. The second error 
+resulted in an error relating to needing an initializer before the variable declaration for numberSurveyed to be displayed since the 
+compiler thinks that there needs to be a semicolon after the “int main()” statement. Finally, the third error resulted in errors 
+relating to needing parenthesis around the boolean statement and the else statement needing a preceding completed if statement since 
+the missing parenthesis confused the compiler on which portion of the code is part of the if statement and which portion of the code 
+is part of the else statement.
