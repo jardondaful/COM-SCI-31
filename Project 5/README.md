@@ -1,10 +1,15 @@
 Part 1
+
 Go through the following sections of the class zyBook, doing the Participation Activities and Challenge Activities. We will be looking at whether you have ever successfully completed them; it does not matter how many attempts you make before a successful completion (or how many attempts you make after a successful completion if you want to experiment).
 
 6.6 through 6.9
 7.2 and 7.3 (Part 2 does not depend on these)
 8.1 and 8.2 (Part 2 does not depend on these)
+
+
 Part 2
+
+
 Before you ask questions about this specification, see if your question has already been addressed by the Project 5 FAQ. And read the FAQ before you turn in this project, to be sure you didn't misinterpret anything.
 
 In the course of their investigation into a series of bank robberies, the FBI discovered encrypted messages sent between some of the suspected perpetrators. While experts are working on decrypting most of the messages, some of the messages appear to have been sent between people who know almost nothing about cryptography, so the Bureau has decided to save money by hiring a student intern to work with those messages. That intern is you.
