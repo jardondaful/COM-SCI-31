@@ -1,3 +1,7 @@
+Programming Assignment 1
+Getting Started with C++
+Time due: 11:00 PM Monday, October 4
+
 The purpose of this assignment is to have you start learning how to use the g++ and either the Visual C++ or Xcode environments, and understand a variety of programming errors.
 
 Here's what you are to do:
