@@ -34,7 +34,9 @@ To make your life easier, whenever this specification talks about strings being 
 Here are the functions you must implement:
 
 int reduplicate(string a[], int n);
-For each of the n elements of the array, append that element to that same element. Return n. [Of course, in this and other functions, if n is negative, the paragraph above that starts "Notwithstanding" trumps this by requiring that the function return −1. Also, in the description of this function and the others, when we say "the array", we mean the n elements that the function is told to consider to be part of the array.] Here's an example:
+For each of the n elements of the array, append that element to that same element. Return n. [Of course, in this and other functions, if n is negative, the paragraph above that starts 
+"Notwithstanding" trumps this by requiring that the function return −1. Also, in the description of this function and the others, when we say "the array", we mean the n elements that the 
+function is told to consider to be part of the array.] Here's an example:
 string stuff[6] = { "mahi", "bon", "cous", "", "tar", "mur" };
 int j = reduplicate(stuff, 6);  // returns 6
     // now stuff[0] is "mahimahi", stuff[1] is "bonbon", stuff[2] is "couscous",
@@ -42,18 +44,21 @@ int j = reduplicate(stuff, 6);  // returns 6
 
 
 int locate(const string a[], int n, string target);
-Return the position of a string in the array that is equal to target; if there is more than one such string, return the smallest position number of such a matching string. Return −1 if there is no such string. As noted above, case matters: Do not consider "ELsa" to be equal to "eLsA".
+Return the position of a string in the array that is equal to target; if there is more than one such string, return the smallest position number of such a matching string. Return −1 if 
+there is no such string. As noted above, case matters: Do not consider "ELsa" to be equal to "eLsA".
 
 
 int locationOfMax(const string a[], int n);
-Return the position of a string in the array such that that string is >= every string in the array. If there is more than one such string, return the smallest position number of such a string. Return −1 if the function should examine no elements of the array. Here's an example:
+Return the position of a string in the array such that that string is >= every string in the array. If there is more than one such string, return the smallest position number of such a 
+string. Return −1 if the function should examine no elements of the array. Here's an example:
 string cast[6] = { "elsa", "ariel", "mulan", "tiana", "belle", "moana" };
 int k = locationOfMax(cast, 6);   // returns 3, since  tiana  is latest
                                   // in alphabetic order
 
 
 int circleLeft(string a[], int n, int pos);
-Eliminate the item at position pos by copying all elements after it one place to the left. Put the item that was thus eliminated into the last position of the array that the function knows about. Return the original position of the item that was moved to the end. Here's an example:
+Eliminate the item at position pos by copying all elements after it one place to the left. Put the item that was thus eliminated into the last position of the array that the function knows 
+about. Return the original position of the item that was moved to the end. Here's an example:
 string folks[5] = { "moana", "elsa", "ariel", "raya", "mulan" };
 int m = circleLeft(folks, 5, 1);  // returns 1
     // folks now contains:  "moana", "ariel", "raya", "mulan", "elsa"
@@ -79,7 +84,8 @@ int q = flip(roles, 4);  // returns 4
 
 
 int locateDifference(const string a1[], int n1, const string a2[], int n2);
-Return the position of the first corresponding elements of a1 and a2 that are not equal. n1 is the number of interesting elements in a1, and n2 is the number of interesting elements in a2. If the arrays are equal up to the point where one or both runs out, return whichever value of n1 and n2 is less than or equal to the other. Here's an example:
+Return the position of the first corresponding elements of a1 and a2 that are not equal. n1 is the number of interesting elements in a1, and n2 is the number of interesting elements in a2. 
+If the arrays are equal up to the point where one or both runs out, return whichever value of n1 and n2 is less than or equal to the other. Here's an example:
 string roles[6] = { "merida", "raya", "", "belle", "moana", "elsa" };
 string group[5] = { "merida", "raya", "elsa", "", "belle" };
 int r = locateDifference(roles, 6, group, 5);  //  returns 2
@@ -87,7 +93,9 @@ int s = locateDifference(roles, 2, group, 1);  //  returns 1
 
 
 int subsequence(const string a1[], int n1, const string a2[], int n2);
-If all n2 elements of a2 appear in a1, consecutively and in the same order, then return the position in a1 where that subsequence begins. If the subsequence appears more than once in a1, return the smallest such beginning position in the array. Return −1 if a1 does not contain a2 as a contiguous subsequence. (Consider a sequence of 0 elements to be a subsequence of any sequence, even one with no elements, starting at position 0.) For example,
+If all n2 elements of a2 appear in a1, consecutively and in the same order, then return the position in a1 where that subsequence begins. If the subsequence appears more than once in a1, 
+return the smallest such beginning position in the array. Return −1 if a1 does not contain a2 as a contiguous subsequence. (Consider a sequence of 0 elements to be a subsequence of any 
+sequence, even one with no elements, starting at position 0.) For example,
 string names[10] = { "moana", "mulan", "raya", "tiana", "merida" };
 string names1[10] = { "mulan", "raya", "tiana" };
 int t = subsequence(names, 5, names1, 3);  // returns 1
@@ -105,7 +113,8 @@ int w = locateAny(names, 6, set2, 2);  // returns -1 (a1 has none)
 
 
 int separate(string a[], int n, string separator);
-Rearrange the elements of the array so that all the elements whose value is < separator come before all the other elements, and all the elements whose value is > separator come after all the other elements. Return the position of the first element that, after the rearrangement, is not < separator, or n if there are no such elements. Here's an example:
+Rearrange the elements of the array so that all the elements whose value is < separator come before all the other elements, and all the elements whose value is > separator come after all 
+the other elements. Return the position of the first element that, after the rearrangement, is not < separator, or n if there are no such elements. Here's an example:
 string cast[6] = { "elsa", "ariel", "mulan", "belle", "tiana", "moana" };
 int x = separate(cast, 6, "merida");  //  returns 3
 	// cast must now be
@@ -124,15 +133,18 @@ int y = separate(cast2, 4, "raya");  //  returns 2
 	// All elements < "raya" (i.e., "ariel" and "mulan") come
         // before all others.
 	// All elements > "raya" (i.e., "tiana") come after all others.
-For each of the functions circleLeft, flip, and separate, if the function is correctly implemented, you will earn one bonus point for that function if it does its job without creating any additional array.
+For each of the functions circleLeft, flip, and separate, if the function is correctly implemented, you will earn one bonus point for that function if it does its job without creating any 
+additional array.
 
-Your program must not use any function templates from the algorithms portion of the Standard C++ library. If you don't know what the previous sentence is talking about, you have nothing to worry about.
+Your program must not use any function templates from the algorithms portion of the Standard C++ library. If you don't know what the previous sentence is talking about, you have nothing to 
+worry about.
 
 Your implementations must not use any global variables whose values may be changed during execution.
 
 Your program must build successfully under both g31 and either Visual C++ or clang++.
 
-The correctness of your program must not depend on undefined program behavior. Your program could not, for example, assume anything about t's value in the following, or even whether or not the program crashes:
+The correctness of your program must not depend on undefined program behavior. Your program could not, for example, assume anything about t's value in the following, or even whether or not 
+the program crashes:
 
 	int main()
 	{
@@ -177,16 +189,22 @@ As with Project 3, a nice way to test your functions is to use the assert facili
 	}
 The reason for the one line of output at the end is to ensure that you can distinguish the situation of all tests succeeding from the case where one test silently crashes the program.
 
-Make sure that if you were to replace your main routine with the one above, your program would build successfully under both g31 and either Visual C++ or clang++. (This means that even if you haven't figured out how to implement some of the required functions, you must still have some kind of implementation for each of them, even if such a stub implementation does nothing more than immediately return, say, 42.) If the program built with that main routine happens to run successfully, you'll probably get a pretty good correctness score.
+Make sure that if you were to replace your main routine with the one above, your program would build successfully under both g31 and either Visual C++ or clang++. (This means that even if 
+you haven't figured out how to implement some of the required functions, you must still have some kind of implementation for each of them, even if such a stub implementation does nothing 
+more than immediately return, say, 42.) If the program built with that main routine happens to run successfully, you'll probably get a pretty good correctness score.
 
 What to turn in
-You won't turn anything in through the CS 31 web site for Part 1; the zyBook system notes your successful completion of the PAs and CAs. For Part 2, turn in a zip file containing these two files and nothing more:
+You won't turn anything in through the CS 31 web site for Part 1; the zyBook system notes your successful completion of the PAs and CAs. For Part 2, turn in a zip file containing these two 
+files and nothing more:
 
-A text file named array.cpp that contains the source code for your C++ program. Your source code should have helpful comments that explain any non-obvious code. If you chose to write additional functions, make sure they are in this file.
+A text file named array.cpp that contains the source code for your C++ program. Your source code should have helpful comments that explain any non-obvious code. If you chose to write 
+additional functions, make sure they are in this file.
 
 A file named report.docx or report.doc (in Microsoft Word format), or report.txt (an ordinary text file) that contains:
 A brief description of notable obstacles you overcame.
-A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. You must note which test cases your program does not handle correctly. (This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.) Notice that most of this portion of your report can be written just after you read the requirements in this specification, before you even start designing your program.
+A list of the test data that could be used to thoroughly test your functions, along with the reason for each test. You must note which test cases your program does not handle correctly. 
+(This could happen if you didn't have time to write a complete solution, or if you ran out of time while still debugging a supposedly complete solution.) Notice that most of this portion 
+of your report can be written just after you read the requirements in this specification, before you even start designing your program.
 How nice! Your report this time doesn't have to contain any design documentation.
 
 By Tuesday, November 2, there will be a link on the class webpage that will enable you to turn in your zip file electronically. Turn in the file by the due time above.
