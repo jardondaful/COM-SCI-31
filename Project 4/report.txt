@@ -1,0 +1,142 @@
+part a)
+
+One notable obstace that I had to overcome when making this program 
+involved making the circleLeft() function since I could not think of a 
+proper way to consistenly close the gap between the elements of the string 
+after the one that was deleted and the ones before they were deleted. To 
+fix this, I had to set separate commands before the for loop that iterated 
+through the array that stored the element at position pos and then set 
+another command  after the for loop to make the second to last element of 
+the array as the stored string.
+
+The second notable obstacle that I had to overcome when making this program
+involved making the subsequence() function since I did not think to use 
+mulitple loops to loop through a2 one time for every element of a1 until 
+the return requirements are met. To fix this, I used two for loops where 
+the inner for loop iterated through the elmeents of a2 every time the 
+first for loop iterated through an element of a1 until a subsequence 
+occurs in a1.
+
+The third notable obstacle that I had to overcome when making this program 
+involved making the separate() function since I did not think to call any 
+of the previously coded functions to assist this function in working 
+properly. I originally tried combining the shifting of the strings in the 
+array and the swapping of them into one process within a for loop, which  
+resulted in either out of bounds errors being thrown. To fix this, I had 
+to call on the previously made function circleLeft() to to push the 
+element the loop was currently on to the end of the array and move 
+everything else one position to the left. From there, I used two more for 
+loops to code out a "shifting right" version of circleLeft()
+
+
+
+part b)
+
+string aa[3] = { "apple", "banana", "orange" };
+string aa0[3] = { "apple", "banana", "orange" };
+string aa00[3] = { "apple", "banana", "orange" };
+string aa000[3] = { "apple", "banana", "orange" };
+string aa1[3] = { "apple", "banana", "orange" };
+string aa2[3] = { "apple", "banana", "orange" };
+string bb[4] = { "apple", "orange", "banana", "kiwi" };
+string cc[3] = { "apple", "banana", "banana" };
+string dd[5] = { "apple", "banana", "banana", "orange", "orange" };
+string ee[1] = {""};
+string ff[1] = { "apple" };
+string gg[5] = { "apple", "banana", "orange", "kiwi", "grape" };
+string hh[4] = { "apple", "banana", "orange", "kiwi" };
+string ii[4] = { "apple", "", "banana", "kiwi" };
+string jj[5] = { "apple", "banana", "banana", "banana", "orange" };
+string hhh[2] = { "apple", "banana" };
+string kk[2] = { "kiwi", "apple" };
+string ll[3] = { "kiwi", "apple", "tangerine" };
+string nn[3] = { "kiwi", "tangerine", "grape" };
+string oo[2] = { "banana", "orange" };
+string pp[3] = { "kiwi", "apple", "apple" };
+
+Test Cases for reduplicate():
+  1) n is negative 
+      assert(reduplicate(aa, -3)==-1)
+  2) all elements in array are filled 
+      assert(reduplicate(bb, 4)==4 && 
+      bb[0]=="appleapple" && bb[1]=="orangeorange" && bb[2]=="bananabanana" && bb[3]=="kiwikiwi")
+  3) empty string in array 
+      assert(reduplicate(ii, 4) == 4 && ii[0]=="appleapple" && ii[1]==""&&ii[2]=="bananabanana" && ii[3] == "kiwikiwi")
+
+Test cases for locate()
+  5) target does not exist in array 
+      assert(locate(aa, 4, "kiwi")==-1)
+  6) target exists in array
+      assert(locate(aa, 3, "banana")==1)
+
+Test Cases for locationOfMax()
+  7) regular array that contains one maximum valued string
+      **assert(location(aa, 3)
+  8) array that contains the same maximum string twice
+      assert(locatioOfMax(cc, 3)==1)
+  9) empty array is passed
+      assert(locationOfMax(ee, 0) == -1)
+  10) n is less than 1
+      assert(locationOfMax(ff, -3) == -1)
+
+Test Cases for circleLeft()
+  11) regular array with all of its elements filled
+        assert(circleLeft(aa, 3, 1)==1 && aa[0]=="apple" && aa[1]=="orange" && aa[2] == "banana"); 
+  12) n is less than 0
+        assert(circleLeft(aa, -1, 1)==-1)
+  13) pos is greater than the largest index of the passed through array
+        assert(circleLeft(aa, 3, 4)==-1)
+
+Test Cases for enumerateRuns()
+  14) array that contains three identical items in a row
+        assert(enumerateRuns(jj, 5)==1)
+  15) array that contains two different identical items two times in a row
+        assert(enumerateRuns(dd, 5)==1)
+  16) size of array is zero
+        assert(enumerateRuns(ee, 0)==0)
+  17) n is negative
+        assert(enumerateRuns(ff, -2)==-1)
+
+Test Cases for flip()
+  18) n is less than 0
+        assert(flip(aa, -3)==-1)
+  19) regularly filled array is passed  
+        assert(flip(aa0, 3)==3 && aa0[0] == "orange" && aa0[1] == "banana" && aa0[2] == "apple")
+
+Test Cases for locateDifference()
+  20) n1 and n2 is less than 0
+        assert(locateDifference(aa, -1, 
+        hh, -2)==-1)
+  21) there is one element in a1 that is not in a2 
+        assert(locateDifference(aa000, 3, mm, 3)==0)
+  22) there are no elements in a1 that are also in a2
+        assert(locateDifference(aa000, 3, nn, 3)==0)
+
+Test Cases for subsequence()
+  23) n1 and n2 is less than 0
+        assert(subsequence(aa00, -4, ll, -3) == -1)
+  24) n1 is less than n2
+        assert(subsequence(ff, 1, hhh, 2)==-1)
+  25) a subsequence of a1 appears in a2
+        assert(subsequence(aa00, 3, oo, 2) ==1)
+
+Test Cases for locateAny()
+  26) n1 and n2 are negative
+        assert(locateAny(aa000, -4, ll, -3)==-1)
+  28) n1 is less than n2  
+        assert(locateAny(kk, 2, aa, 3)==1)
+  27) an element of a1 exists in a2
+        assert(locateAny(aa000, 3, ll, 3) == 0)
+  28) an element of a1 exists two times in a2
+        assert(locateAny(aa000, 3, pp, 3) == 0)
+
+Test Cases for seaparate()
+  29) n is negative
+      assert(separate(hh, -1, "orange")==-1)
+  30) some elements of array are lower in value than separator and some elements of array are lower in value than separator
+      assert(separate(gg, 5, "grape") == 2 && gg[0] == "apple" && gg[1] == "banana" && gg[2] == "grape" && gg[3] == "kiwi" && gg[4] == "orange") 
+  31) no elements of array are lower in value than separator
+      assert(separate(aa1, 3, "aa") == 0 && aa[0] == "orange" && aa[1] == "banana" && aa[2] == "apple")
+  32) no elements of array are higher in value than separator
+      assert(separate(aa2, 3, "zebra") == 3 && aa[0] == "apple" && aa[1] == "banana" && aa[2] == "orange")
+
