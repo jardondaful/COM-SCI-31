@@ -1,0 +1,256 @@
+part a)
+
+One notable obstacle that I had to overcome when creating this project is 
+reformatting the crib parameter so it gets rid of all punctuation and 
+unnecessary spacing before, in the middle of, and after it. In the beginning, 
+I was only able to get rid of the punctuation and the excessive spaces in the 
+beginning of crib. To fix this issue, I had to create a separate helper function that 
+takes in two cstring parameters. It uses a while loop, an iterator i
+that iterated through crib itself, a boolean on_word that checks if previously 
+described iterator reached a letter, and another iterator j that keeps track 
+of the maximum index that the reformatted crib reaches. When the iterator that 
+iterated through reference does not hit a letter, it checks to see if 
+on_word is true and then proceeds to replace ciphertext[j] with a space and 
+increase j by 1 if so. Afterwards, it increases i by 1. J is then decreased by 
+1 if the last character of the reformatted crib is a space
+
+Another notable obstacle that I had to overcome when creating this project is 
+finding the part of the ciphertext that corresponded with the given crib. To 
+solve this issue, I created two separate cstrings that stored the converted 
+versions of them where they had all of their alphabetic charcters replaced 
+with the letter 'w' (ciphertext_to_w and crib_to_w). I then iterated through 
+ciphertext and stored where crib_to_w was a substring of ciphertext_to_w. If 
+there was no such location, I made the 
+decrypt(const char ciphertext[], const char crib[]) function return false
+
+The third notable obstacle that I had to overcome when creating this project 
+is creating the partial key from crib itself. At first, I tried to use a key 
+that only consisted of the encrypted letters that were equivalent to crib but 
+that caused my function to only output the letters decrypted from crib that
+also belong to the characters of crib. To fix this, I created two cstrings 
+(alphabet and cipheralphabet) that stored the letters of the alphabet and 
+switched out the letters of cipheralphabet with their encrypted equivalent. 
+From there, I used cipheralphabet as the decryption key to print out the partially 
+decrypted cstring.
+
+The fourth notable obstacle that I had to overcome when creating this project is 
+making sure that the decrypt() function returned false if the crib matched up 
+with some words within the ciphertext but spanned across multiple messages. Intiially,
+I kept on accidentally getting rid of all \n's in both crib and ciphertext and replacing 
+them with spaces. To fix this, I altered the reformat function so it ignores the \n characters
+and then got rid of the \n characters in a copy of crib in the decrypt() function
+
+
+
+part b)
+
+My code for this project involves two helper functions and the decrypt() function as 
+described in the Project 5 spec. The two helper functions are 
+reformat(char ciphertext[], const char reference[]) and sameType(char a, char b). 
+
+The reformat(char ciphertext[], const char reference[]) function takes in two parameters: 
+a copy of the cstring that needs to be reformatted and the cstring itself that needs 
+to be reformatted. It then reformats ciphertext by setting ciphertext equal to the lowercase 
+equvalent of reference and then getting rid of unecessary whitespace, punctuation, and numbers 
+within the cstring. The psuedocode for this function is as below
+
+  define reformat function:
+    declare i and j and set both equal to zero
+    declare on_word and set to false
+    repeatedly:
+      if ith character of reference is a letter or \n,
+        set on_word to false if ith character is \n and on_word to true if otherwise
+        set jth ciphertext character to lowercased ith reference character and increment j by 1 
+      else,
+        if on_word is true,
+          set on_word to false and jth character of ciphertext to a space and increment j by 1
+      increment i by 1
+    if (j-1)th character of ciphertext is a space,
+      set (j-1)th character of ciphertext to null terminating character
+
+
+The sameType(char a, char b) function takes in two character parameters. It returns true if they 
+are both either the same letter or spaces and returns false if otherwise.The psuedocode for this 
+function is as below
+
+  define sameType function:
+    return true if either both a and b are the same letter (not case sensitive) or a and b are both space and return false if otherwise
+    
+
+The decrypt(const char ciphertext[], const char crib[]) fucntion takes in two parameters: 
+the encrypted message and the phrase that could potentially be part of the decrypted message. 
+It first makes a reformatted copy of ciphertext and crib and returns false on the following 
+edge cases: if crib is an empty cstring, if the length of crib is greater than the length of 
+ciphertext, or if crib is creater than the maximum allowed crib length.Next, a boolean "advance" 
+is initialized to false and an iterator "substr_index"is initialized to zero. 
+
+A while loop is then executed. Within it, it increments substr_index by 1 and forces the next 
+iteration of the while loop if "advance" is true and turns "advance" to true and increments substr_index 
+by 1 if otherwise. Afterwards, two empty cstrings cipher_to_crib and crib_to_cipher are declared and are 
+each intiially filled with 26 null terminating characters. Another iterator "i" is then declared as the 
+most recent value of substr_index and a for loop is executed (substr_index + (length of crib-i-1) times. 
+Within the for loop, it makes the decrypt() function return false if i is greater than the length of 
+(reformatted_ciphertext-1). Otherwise, the current for-loop iteration is skipped if reformatted_crib[cribIndex] 
+and reformatted_ciphertext[i] are not the same type of character, and skips the current iteration of the while 
+loop if both reformatted_ciphertext[i] and reformatted_crib[cribIndex] are spaces.
+
+If otherwise, the for-loop then execuites one of the following after setting a new variable current_index_of_crib_letter 
+to the index that the letter of reformatted_ciphertext[cribIndex] is located and a new variable cirrent)index) of_cipher_letter 
+to the index that the letter of reformatted_ciphertext[i] is located: set cipher_to_crib[current_index_of_crib_letter] equal to 
+reformatted_ciphertext[i] and crib_to_cipher[current_index_of_cipher_letter] equal to reformatted_crib[cribIndex] if 
+crib_to_cipher[current_index_of_cipher_letter] is equal to a null terminating character and breaks out of the for loop if otherwise.**
+
+After all of the code in the while loop is executed, the function then uppercases all of the characters of ciphertext 
+that were decrypted, lowercase all the other letters, and preserve the remaining characters. Finally, it prints out the 
+entire (partially) decrypted message. The psuedocode for the entire function is as follows:
+
+  define decrypt() function:
+    return false if crib is empty and length of crib is greater than maximum allowed crib length
+    declare ciphertext_copy, reformatted_crib, crib_copy, and reformatted_ciphertext 
+    copy character of ciphertext_copy to ciphertext
+    fill reformatted_crib and reformatted_ciphertext with null bytes
+    copy contents of crib to crib_copy and get rid of \n characters in crib_copy
+    call on reformat() funciton for ciphertext and store reformatted ciphertext in crib_copy
+    replace \n characters in reformatted_crib with space
+    call on reformat() function for ciphertext and store reformatted ciphertext in reformatted_ciphertext
+    return false if crib is empty, length of crib is greater than length of cipher text, or if the length of the crib is greater than 90
+    declare new variable substr_index and set it to 0
+    declare new variable advance and set it to false
+    repeatedly:
+      if advance is true,
+        if (substr_index)th character of reformatted_ciphertext is not a space,
+          increment susbtr_index by 1 and skip to next while loop iteration
+        else,
+          iterate substr_index by 1 and set advance to false
+      declare new variables ciber_to_crib and crib_to_cipher and fill both with 26 null terminating characters
+      declare new variable i and set it equal to current value of substr_index
+    if cribIndex is equal to (length of crib - 1) and either i+1 is equal to the length of reformatted_ciphertext or (i+1)th character of reformatted_ciphertext is a space,
+      repeatedly,
+        return false if i i sgreater than (length of reformatted_ciphertext)-1
+        get out of for-loop if reformatted_crib[cribIndex] and reformatted_ciphertext[i] are not the same type of character
+        continue to next iteration of for-loop if reformatted_ciphertext[i] and reformatted_crib[cribIndex] are both spaces
+        else,
+          declare new variable current_index_of_crib_letter and set it equal to position of letter at reformatted_crib[cribIndex] 
+          declare new variable current_index_of_cipher_letter and set it equal to position of letter at reformatted_ciphertext[i]
+          if crib_to_cipher[current_index_of_cipher_letter] is a null terminating character,
+            set cipher_to_crib[current_index_of_crib_letter] equal to reformatted_ciphertext[i] and crib_to_cipher[current_index_of_cipher_letter] equal to reformatted_crib[cribIndex]
+          else break out of for loop if either ciber_to_crib[cirrentindex_of_crib_letter] and reformatted_ciphertext[i] are not the same character or crib_to_cipher[current_index__of_cipher_letter] and reformatted_crib[cribIndex] are not the same character
+        set ciphertext_copy[j] equal to uppercased cribLetter if cribLetter is not a null terminating character
+        set ciphertext_copy[j] to lowercased ciphertext_copy[j] if otherwise
+      print out characters of ciphertext_copy
+      return true
+    set advance to true
+  return false
+
+
+
+part c)
+
+Test Cases for reformat() function:
+  Test Case #1: excessive spaces in the beginning of the cstring 
+    char text1[maxCipherLength] = "      hello there how are you";
+    char reference1[maxCipherLength];
+    reformat(reference1, text1);
+    assert(strcmp(reference1, "hello there how are you")==0);
+  Test Case #2: excessive spaces within the cstring
+    char text2[maxCipherLength] = "hello there                how are you";
+    char reference2[maxCipherLength];
+    reformat(reference2, text2);
+    assert(strcmp(reference2, "hello there how are you")==0);
+  Test Case #3: excessive spacing at the end of the cstring 
+    char text3[maxCipherLength] = "hello there how are you                    ";
+    char reference3[maxCipherLength];
+    reformat(reference3, text3);
+    assert(strcmp(reference3, "hello there how are you")==0);
+  Test Case #4: a lot of punctuation within the cstring
+    char text4[maxCipherLength] = "!@#!@$@#@!he@@llo there. *&^%$how are you&^%&*?";
+    char reference4[maxCipherLength];
+    reformat(reference4, text4);
+    assert(strcmp(reference4, "he llo there how are you")==0);
+  Test Case #5: a mixture of uppercase and lowercase letters  
+    char text5[maxCipherLength] = "HeLlO tHeRe HoW ArE YoU";
+    char reference5[maxCipherLength];
+    reformat(reference5, text5);
+    assert(strcmp(reference5, "hello there how are you")==0);
+
+Test Cases for sameType() function:
+  Test Case #6: characters are both spaces 
+    assert(sameType(' ', ' ')==true);
+  Test Case #7: characters are both lowercase letters
+    assert(sameType('a', 'a')==true);
+  Tset Case #8: characters are both uppercase letters 
+    assert(sameType('A', 'A')==true);
+  Test Case #9: one character is uppercase and one character is lowercase 
+    assert(sameType('a', 'A')==true);
+  Test Case #10: one character is a letter and one character is a space
+    assert(sameType('a', ' ')==false);
+  Test Case #11: crib is a null byte
+    assert(sameType('a','\0')==false);
+
+  Test Cases for decrypt() function:
+    Test Case #12: Encrypted message is able to become partially decrypted and contains \n characters
+      assert(decrypt("Hirdd ejsy zu drvtry od.\nO'z fodvtrry.\n", "my secret")==true); 
+      and output is "hiESS ejsT MY SECRET oS.\no'M foSCREET."
+    Test Case #13: Crib does not exist within enncrypted 
+      assert(decrypt("Hirdd ejsy zu drvtry od.\nO'z fodvtrry.\n", "shadow")==false);
+    Test Case #14: Crib is empty
+      assert(decrypt("Hirdd ejsy zu drvtry od.\nO'z fodvtrry.\n", "")==false);
+    Test Case #15: Length of crib is greater than length of encrypted message
+      assert(decrypt("Hirdd ejsy zu drvtry od.", "supercalifragilisticexpialidocious")==false);
+    Test Case #16: Length of crib is greater than the maximum allowed crib length
+      assert(decrypt("Hirdd ejsy zu drvtry od Hirdd ejsy zu drvtry od Hirdd ejsy zu drvtry od 
+      Hirdd ejsy zu drvtry od Hirdd ejsy zu drvtry od.", "Hello Alexander how have you been? 
+      I just wanted to let you know that the money is located somewhere in UCLA at Rieber Hall 
+      on the north side of the fifth floor within the lounge. Good luck on finding it!")==false);
+    Test Case #17: Encrypted message is able to become fully decrypted and both encrypted message and crib contains a mixture of uppercase and lowercase letters
+      assert(decrypt("Gsc JfrxP YiDlM UlC qfnkh Levi GSRigvvM ozab Wlth", "QuIcK")==true); and output=="gsc QUICK yidlm ulc qfnkh levi gsrigvvm ozab wlth"
+    Test Case #18: Message is able to become fully decrypted but the crib contains a lot of unnecessary spaces, punctuation, and numbers 
+      assert(decrypt("Gsc JfrxP YiDlM UlC qfnkh Levi GSRigvvM ozab Wlth", "    \n73%*&^#%9837QuIcK$%^&8545     ")==true); and output=="gsc QUICK yidlm ulc qfnkh levi gsrigvvm ozab wlth"
+    Test Case #19: Ciphertext contains 6300 letters
+      int counter = 0;
+      char aa[6371];
+      while(counter<6371)
+      {
+        
+        if(counter % 90 == 0 && counter != 0)
+        {
+          aa[counter]='\n';
+        } 
+        else 
+        {
+          aa[counter] = 'a';
+        }
+        counter++;
+      }
+      char aa[6370] = '\0';
+      assert(decrypt(aa, "a")==true);
+    Test Case #20: Ciphertext consists of one letter followed by a space ("a a a...")
+      int counter2 = 0;
+      char aaa[141];
+      while(counter2 < 140)
+      {
+        if((counter2) % 2 == 0 && counter2==0)
+        {
+          aaa[counter2] = '\n';
+        }
+        else{
+          aaa[counter2]='a';
+        }
+        counter2++;
+      }
+      aaa[140] = '\0';
+      assert(decrypt(aaa, "a")==true); 
+    Test Case #21: Crib is null byte  
+      char b[1];
+      b[0] = '\0';
+      assert(decrypt("Gsc JfrxP YiDlM UlC qfnkh Levi GSRigvvM ozab Wlth", b)==false);
+    Test Case #21: Ciphertext contains a lot of \n
+      assert(decrypt("\n\n\n\n\n\n\n\n\n", "a")==false);
+    Test Case #22: Ciphertext contains a lot of spaces 
+      assert(decrypt("         ", "a')==false);
+    Test Case #23: Ciphertext contains a lot of invalid characters
+      assert(decrypt("$%^&*()*&^%$%^&*(*&^%$%^&)   @!(#^!$($&%!*))         ", "a")==false);
+    Test Case #24: Crib exists between two messages
+      assert(decrypt("bwra wmwt\nqeirtk spst\n", "alan turing") == false);
+    Test Case #25:  Crib exists in only one of the messages
+      assert(decrypt("bwra wmwt qeirtk spst\n", "alan turing") == true);
